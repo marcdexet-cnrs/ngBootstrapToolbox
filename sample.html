@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app="plunker">
+
+<head>
+  <meta charset="utf-8" />
+  <title>AngularJS Plunker</title>
+  <link data-require="bootstrap-css@*" data-semver="3.3.1" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+  <script>
+    document.write('<base href="' + document.location + '" />');
+  </script>
+  <link rel="stylesheet" href="style.css" />
+  <script data-require="angular.js@1.3.x" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.7/angular.js" data-semver="1.3.7"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.7/angular-messages.js"></script>
+  <script data-require="ui-utils@*" data-semver="0.1.1" src="http://angular-ui.github.io/ui-utils/dist/ui-utils.js"></script>
+  <script src="bs-toolbox.js"></script>
+  <script src="app.js"></script>
+  <script src="message-service.js"></script>
+  <script src="my-form-ctrl.js"></script>
+
+
+</head>
+
+<body ng-controller="MainCtrl">
+  <p>Hello {{name}}!</p>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <form name="myForm" class="form-horizontal" novalidate="" ng-submit="submit(data, myForm)" ng-controller="MyFormCtrl" bs-cols="{md: '2-10', lg: '3-9'}">
+          <legend>My Form</legend>
+          <form-group label="Courriel">
+            <input type="email" name="email" ng-model="data.email" placeholder="mail" required="" ui-validate="{ nocnrs: 'checkLaboMail($value)'}" />
+          </form-group>
+          <form-group label="Laboratoire">
+            <input type="text" name="labo" ng-model="data.labo" placeholder="Votre laboratoire" required="" ui-validate="{ labo: 'checkLabo($value)'}" />
+          </form-group>
+          <form-group label="Nom">
+            <input type="text" name="name" ng-model="data.name" placeholder="Nom" required ng-minlength="5" ng-maxlength="20" />
+          </form-group>
+          <form-group label="Adresse">
+            <textarea bs-cols="{md: '6-6', lg: '6-6'}" name="address" ng-model="data.address" placeholder="Adresse" required ng-minlength="5" ng-maxlength="20"></textarea>
+          </form-group>
+          <form-group>
+            <button type="submit">Submit</button>
+          </form-group>
+          </form>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      DATA {{data}}
+    </div>
+  </div>
+</body>
+
+</html>
